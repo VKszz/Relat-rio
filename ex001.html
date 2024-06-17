@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¥$</title>
+    <style>
+        body{
+            background-color: rgb(6, 174, 252);
+            color: rgb(0, 0, 0);
+            font: normal 20pt Arial;
+           padding-bottom: 20px; 
+           text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>¥$</h1>   <!-- Campos para inserir informações-->
+    
+    Resolvido por <input type="text" placeholder="ID DISCORD" id="disstaff"> </br>
+    Denunciante   <input type="text" placeholder="ID DISCORD" id="disdenunciante"> <input type="text" placeholder="ID CIDADE" id="cidadedenunciante"></BR>
+    Denunciado    <input type="text" placeholder="ID DISCORD" id="disdenunciado"> <input type="text" placeholder="ID CIDADE" id="cidadedenunciado"></BR>
+    TICKET        <input type="text" placeholder="NÚMERO DO TICKET" id="ticket"></BR>
+    JULGAMENTO    <select name="julgamento" id="julgamento"> 
+                  <option value="APROVADO">APROVADO</option>
+                  <option value="NEGADO">NEGADO</option>
+                                         </select></BR>
+    MOTIVO        <input type="text" placeholder="MOTIVO" id="motivo"></BR>
+    PUNIÇÃO       <select name="punicao" id="punicao"></BR>
+                  <option value="1218693120183631974">ADV VERBAL</option>
+                  <option value="1218692969973022730">ADV 1</option>
+                  <option value="1218693038629453975">ADV 2</option>
+                  <option value="1218693194796241009">BANIDO</option>
+                                         </select></BR>
+    PROVAS        <input type="text" placeholder="PROVAS" id="provas"></BR>
+    PENDÊNCIAS    <input type="text" placeholder="ITENS" id="pendencias"></BR>
+
+
+         <!-- Botões para gerar relatórios -->
+
+        <button onclick="gerarRelatorio()">Gerar Relatório</button>
+        <button onclick="copiarRelatorio()">Copiar Relatório</button>
+
+</BR></BR></BR>
+    <div id="resultado">     
+        **RESOLVIDO POR**:  | </BR>
+        **DENUNCIANTE**: <@> // </BR>
+        **DENUNCIADO**: <@> // </BR>
+        **TICKET:**</BR>
+        **JULGAMENTO:**: </BR>
+        **MOTIVO**: </BR>
+        **PUNIÇÃO**: </BR>
+        **PROVAS**: </BR>
+    </div> 
+
+
+    <script> 
+    function gerarRelatorio(){
+         var r = document.getElementById('resultado');
+         var disstaff = document.getElementById('disstaff').value;
+         var disdenunciante = document.getElementById('disdenunciante').value;
+         var cidadedenunciante = document.getElementById('cidadedenunciante').value;
+         var disdenunciado = document.getElementById('disdenunciado').value;
+         var cidadedenunciado = document.getElementById('cidadedenunciado').value;
+         var ticket = document.getElementById('ticket').value;
+         var julgamento = document.getElementById('julgamento').value;
+         var motivo = document.getElementById('motivo').value;
+         var punicao = document.getElementById('punicao').value;
+         var provas = document.getElementById('provas').value;
+         var pendencias = document.getElementById('pendencias').value;
+
+        
+        //  var disstaff = 
+      //    var disdenunciante = 
+   //       var
+ 
+       r.innerHTML = `
+        
+        **RESOLVIDO POR**: <@${disstaff}>  </BR></BR></BR>
+        **DENUNCIANTE**: <@${disdenunciante}> // ${cidadedenunciante} </BR>
+        **DENUNCIADO**: <@${disdenunciado}> // ${cidadedenunciado} </BR>
+        **TICKET:** ${ticket} </BR>
+        **JULGAMENTO:**: ${julgamento} </BR>
+        **MOTIVO**: ${motivo} </BR>
+        **PUNIÇÃO**: <@&${punicao}> </BR>
+        **PROVAS**: ${provas} </BR>
+        **PENDÊNCIAS**: ${pendencias} </BR>
+        `;
+}
+        
+        function copiarRelatorio(){
+            var r = document.getElementById('resultado');
+            var range = document.createRange();
+            range.selectNode(r);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+
+            try{
+                document.execCommand('copy');
+                alert('Relatório copiado para a área de transferência'); //depois muda se quiser blz                
+            } catch (err) {
+                alert('Erro ao copiar o relatório.');
+            }
+            
+            window.getSelection().removeAllRanges();
+
+        }
+    
+    </script>
+</body>
+</html> 
+
